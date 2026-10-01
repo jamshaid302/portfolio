@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+html:not(.dark) {
+  color-scheme: light;
+}
+
+/* Display & Headline Typography Helper */
+.font-discord-display {
+  font-family: var(--font-inter), "Inter", system-ui, -apple-system, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.font-notion-display {
+  font-family: var(--font-inter), "Inter", system-ui, -apple-system, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Notion custom scrollbar matching active theme */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #0a0d1a;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #0075de;
+  border-radius: 9999px;
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #62aef0;
+}
+
+html:not(.dark) ::-webkit-scrollbar-track {
+  background: #f6f5f4;
+}
+html:not(.dark) ::-webkit-scrollbar-thumb {
+  background: #d0cecc;
+  border-radius: 9999px;
+}
+html:not(.dark) ::-webkit-scrollbar-thumb:hover {
+  background: #0075de;
+}
+
+/* Hide scrollbar utility & activity calendar scrollbars */
+.no-scrollbar::-webkit-scrollbar,
+.no-scrollbar *::-webkit-scrollbar,
+.react-activity-calendar::-webkit-scrollbar,
+.react-activity-calendar *::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+.no-scrollbar,
+.no-scrollbar *,
+.react-activity-calendar,
+.react-activity-calendar * {
+  -ms-overflow-style: none !important;  /* IE and Edge */
+  scrollbar-width: none !important;  /* Firefox */
+}
+
+/* Notion Elevation & Soft Layered Shadows */
+@layer utilities {
+  .notion-shadow-soft {
+    box-shadow: rgba(0, 0, 0, 0.03) 0px 1px 3px, rgba(0, 0, 0, 0.04) 0px 4px 12px;
+  }
+
+  .notion-shadow-elevated {
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 6px 20px, rgba(0, 0, 0, 0.04) 0px 2px 6px;
+  }
+
+  .dark .notion-shadow-soft {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 8px, rgba(0, 0, 0, 0.2) 0px 8px 24px;
+  }
+
+  .dark .notion-shadow-elevated {
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 8px 30px, rgba(0, 0, 0, 0.25) 0px 4px 12px;
+  }
+}
